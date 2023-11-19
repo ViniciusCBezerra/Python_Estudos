@@ -1,5 +1,5 @@
-import ex004_Adivinha
-import ex005_Forca
+from Alura import ex004_Adivinha, ex005_Forca
+
 
 def Jogos():
     print('=-'*20)

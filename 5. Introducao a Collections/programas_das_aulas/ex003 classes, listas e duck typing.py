@@ -1,5 +1,5 @@
 from abc import ABCMeta,abstractmethod
-from operator import attrgetter
+from functools import total_ordering
 
 class Conta(metaclass=ABCMeta):
     def __init__(self,codigo):
@@ -28,6 +28,7 @@ class ContaInvestimento(Conta):
     def passa_mes(self):
         self._saldo *= 1.09
 
+@total_ordering
 class ContaSalario:
     def __init__(self, codigo):
         self._codigo = codigo
@@ -43,7 +44,10 @@ class ContaSalario:
             return self._codigo == other._codigo and self._saldo == other._saldo
 
     def __lt__(self, other):
-        return self._saldo < other._saldo
+        if self._saldo != other._saldo:
+            return self._saldo < other._saldo
+        else:
+            return self._codigo < other._codigo
 
     def __str__(self):
         return f'>> Código: {self._codigo}  Saldo: {self._saldo} <<'
@@ -72,9 +76,11 @@ conta_dani = ContaSalario(3)
 conta_dani.deposita(1000)
 
 conta_paulo = ContaSalario(133)
-conta_paulo.deposita(510)
+conta_paulo.deposita(500)
 
 contas = [conta_gui,conta_dani,conta_paulo]
 
 for conta in sorted(contas):
     print(conta)
+
+print(conta_gui <= conta_gui)

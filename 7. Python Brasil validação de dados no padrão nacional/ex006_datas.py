@@ -3,4 +3,4 @@ from datetime import timedelta,datetime
 
 
 hoje = DatasBr()
-print(hoje.tempo_cadastro())
+print(hoje)

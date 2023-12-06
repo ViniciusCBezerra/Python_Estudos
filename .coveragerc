@@ -1,0 +1,10 @@
+[run]
+source = ./8._Python_e_TDD_explorando_teste_unitarios/programa
+
+[report]
+exclude_lines =
+    def __str__
+
+
+[html]
+directory = coverage_relatorio_html

@@ -1,6 +1,11 @@
+import requests
 from ex007_cep import BuscaEndereco
 
-
-cep = 25870149
+cep = '03918000'
 objeto_cep = BuscaEndereco(cep)
-print(objeto_cep)
+
+
+bairro,cidade,uf = objeto_cep.acessa_via_cep()
+print(f'Bairro: {bairro}')
+print(f'Cidade: {cidade}')
+print(f'Uf: {uf}')
